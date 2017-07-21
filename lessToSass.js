@@ -40,9 +40,12 @@ export async function convert (input) {
     //     console.log(variable.value);
     // }
     // Approach 1: we take parse tree and generate directly Scss from it.
-    // let output = '';
+    // This will certainly generate a target source file that looks really
+    // different from the original source file. (Loosing spacing, indentation)
 
     // Approach 2: we use parse tree to match input and generate corresponding output.
+    // We try to preserve as much as possible the original source file indentation
+    // and style.
     // Some part may not be transformed at all.
     let output = '';
     for (let i = 0; i < parseTree.rules.length; i++) {
@@ -78,8 +81,9 @@ export async function convert (input) {
             output += input.substr(node.index, length);
         }
     }
+
     // Approach 2 bis: use parse tree to determine what is each section, then
-    // use appropriate regex for section. This is regex approach + insight.
+    // use appropriate regex for section. This is regex approach + contextual insight.
 
     return output;
 };
