@@ -1,0 +1,29 @@
+{
+  "name": "less-to-sass-ast",
+  "version": "0.0.1",
+  "description": "Convet Less files to Scss, using Less parser AST",
+  "main": "lessToSass.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "Less",
+    "Sass",
+    "Scss",
+    "converter",
+    "AST"
+  ],
+  "bin": {
+    "lessToSass": "./lessToSass.js"
+  },
+  "author": "Yoan Tournade <yoan@ytotech.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.6.0",
+    "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "less": "^2.7.2"
+  }
+}
