@@ -20,7 +20,6 @@ export async function convert (input) {
     let ast;
     try {
         parseTree = await parse(input);
-        console.log(parseTree);
         // TODO Use ParseTree to manage imports.
         // const tree = new ParseTree(parseTree);
         // console.log(tree.root);
@@ -40,34 +39,48 @@ export async function convert (input) {
     //     console.log(name);
     //     console.log(variable.value);
     // }
-    let output = _.clone(input);
+    // Approach 1: we take parse tree and generate directly Scss from it.
+    // let output = '';
+
+    // Approach 2: we use parse tree to match input and generate corresponding output.
+    // Some part may not be transformed at all.
+    let output = '';
     for (let i = 0; i < parseTree.rules.length; i++) {
         const node = parseTree.rules[i];
         const nextNode = i < parseTree.rules.length ? parseTree.rules[i+1] : null;
         const length = nextNode ? nextNode.index - node.index : input.length;
         console.log(node);
-        if (node.variable) {
+        if (node.variable == true) {
             function getValue(node, value) {
+                if (!node) {
+                    return ''
+                }
                 if (_.isArray(node.value)) {
                     let values = [];
-                    // console.log('Node', node);
                     _.forEach(node.value, (nodeValue) => {
-                        // console.log('NodeValue', nodeValue);
                         values.push(getValue(nodeValue, ''));
                     })
                     return values.join(', ');
                 }
-                // console.log('Leaf', node);
                 return value + node.value;
             }
             let nodeOutput = node.name.replace('@', '$') + ': ' + getValue(node.value, '');
-            console.log(nodeOutput);
-            // TODO Preserve \n.
-            output = spliceSlice(output, node.index, length, nodeOutput);
+            // TODO Preserve original separator from input (space, tab, \n, etc.).
+            nodeOutput += ';';
+            if (nextNode) {
+                nodeOutput += ' ';
+            }
+            console
+            // TODO We must track and match output and input indexes, are they
+            // will differ while we are
+            output += nodeOutput;
+        } else {
+            output += input.substr(input, node.index, length);
         }
     }
+    // Approach 2 bis: use parse tree to determine what is each section, then
+    // use appropriate regex for section. This is regex approach + insight.
 
-    console.log(output);
     return output;
 };
 
