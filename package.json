@@ -1,7 +1,7 @@
 {
   "name": "less-to-sass-parsetree",
   "version": "0.0.1",
-  "description": "Convet Less files to Scss, using Less parse tree",
+  "description": "Convert Less files to Scss, using Less parse tree",
   "main": "lessToSass.js",
   "scripts": {
     "test": "jest"
