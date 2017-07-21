@@ -16,55 +16,55 @@ describe("variables", async function() {
     expect(result).toBe('$san-serif-stack: helvetica, arial; $standard-fonts: \'#{$san-serif-stack}, sans-serif\';');
   });
 
-  // it('converts @ for variables to $', async function() {
-  //   const result = await lessToSass.convert('@var1: #000;');
-  //   expect(result).toBe('$var1: #000;');
-  // });
-  //
-  // it('converts multiple variables in the same line', async function() {
-  //   const result = await lessToSass.convert('@var1: #000; @var2: #fff;');
-  //   expect(result).toBe('$var1: #000; $var2: #fff;');
-  // });
-  //
-  // it('still converts variables have the word "media" in them', async function() {
-  //   const result = await lessToSass.convert('@mediaType: screen;');
-  //   expect(result).toBe('$mediaType: screen;');
-  // });
-  //
-  // it('still converts variables have the word "import" in them', async function() {
-  //   const result = await lessToSass.convert('@importType: screen;');
-  //   expect(result).toBe('$importType: screen;');
-  // });
-  //
-  // it('still converts variables have the word "import" in them', async function() {
-  //   const result = await lessToSass.convert('@mixinType: screen;');
-  //   expect(result).toBe('$mixinType: screen;');
-  // });
-  //
-  // it('does not convert @ to $ for media queries', async function() {
-  //   const result = await lessToSass.convert('@media(min-width:768px) {}');
-  //   expect(result).toBe('@media(min-width:768px) {}');
-  // });
-  //
-  // it('does not convert @ to $ for @mixin statements', async function() {
-  //   const result = await lessToSass.convert('@mixin screen() {}');
-  //   expect(result).toBe('@mixin screen() {}');
-  // });
-  //
-  // it('does not convert @ to $ for @import statements', async function() {
-  //   const result = await lessToSass.convert('@import "common"');
-  //   expect(result).toBe('@import "common"');
-  // });
-  //
-  // it('does not convert @ to $ for @font-face statements', async function() {
-  //   const result = await lessToSass.convert('@font-face {}');
-  //   expect(result).toBe('@font-face {}');
-  // });
-  //
-  // it('does not convert @ to $ for @keyframes statements', async function() {
-  //   const result = await lessToSass.convert('@keyframes {}');
-  //   expect(result).toBe('@keyframes {}');
-  // });
+  it('converts @ for variables to $', async function() {
+    const result = await lessToSass.convert('@var1: #000;');
+    expect(result).toBe('$var1: #000;');
+  });
+
+  it('converts multiple variables in the same line', async function() {
+    const result = await lessToSass.convert('@var1: #000; @var2: #fff;');
+    expect(result).toBe('$var1: #000; $var2: #fff;');
+  });
+
+  it('still converts variables have the word "media" in them', async function() {
+    const result = await lessToSass.convert('@mediaType: screen;');
+    expect(result).toBe('$mediaType: screen;');
+  });
+
+  it('still converts variables have the word "import" in them', async function() {
+    const result = await lessToSass.convert('@importType: screen;');
+    expect(result).toBe('$importType: screen;');
+  });
+
+  it('still converts variables have the word "import" in them', async function() {
+    const result = await lessToSass.convert('@mixinType: screen;');
+    expect(result).toBe('$mixinType: screen;');
+  });
+
+  it('does not convert @ to $ for media queries', async function() {
+    const result = await lessToSass.convert('@media(min-width:768px) {}');
+    expect(result).toBe('@media(min-width:768px) {}');
+  });
+
+  it('does not convert @ to $ for @mixin statements', async function() {
+    const result = await lessToSass.convert('@mixin screen() {}');
+    expect(result).toBe('@mixin screen() {}');
+  });
+
+  it('does not convert @ to $ for @import statements', async function() {
+    const result = await lessToSass.convert('@import "common"');
+    expect(result).toBe('@import "common"');
+  });
+
+  it('does not convert @ to $ for @font-face statements', async function() {
+    const result = await lessToSass.convert('@font-face {}');
+    expect(result).toBe('@font-face {}');
+  });
+
+  it('does not convert @ to $ for @keyframes statements', async function() {
+    const result = await lessToSass.convert('@keyframes {}');
+    expect(result).toBe('@keyframes {}');
+  });
 });
 
 // describe("~ strings", async function() {

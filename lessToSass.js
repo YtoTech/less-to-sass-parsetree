@@ -75,7 +75,7 @@ export async function convert (input) {
             // will differ while we are
             output += nodeOutput;
         } else {
-            output += input.substr(input, node.index, length);
+            output += input.substr(node.index, length);
         }
     }
     // Approach 2 bis: use parse tree to determine what is each section, then
