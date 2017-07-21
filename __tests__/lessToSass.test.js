@@ -11,8 +11,8 @@ import lessToSass from '../lessToSass';
 // });
 
 describe("variables", function() {
-  it('converts interpolated variables to #{$', function() {
-    const result = lessToSass.convert('@san-serif-stack: helvetica, arial; @standard-fonts: ~\'@{san-serif-stack}, sans-serif\';');
+  it('converts interpolated variables to #{$', async function() {
+    const result = await lessToSass.convert('@san-serif-stack: helvetica, arial; @standard-fonts: ~\'@{san-serif-stack}, sans-serif\';');
     expect(result).toBe('$san-serif-stack: helvetica, arial; $standard-fonts: \'#{$san-serif-stack}, sans-serif\';');
   });
 
