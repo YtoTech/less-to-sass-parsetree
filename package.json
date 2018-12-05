@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "less": "^3.0.2",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.5"
   }
 }
